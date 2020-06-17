@@ -3,46 +3,31 @@
     <div class="layout">
       <!-- 左侧导航栏 -->
       <aside class="aside_left">
-        <div class="title">klipc</div>
-        <nav>
-          <ul>
-            <li>
-              <router-link to="/index/userinfo"><i class="el-icon-user"></i> 用户信息</router-link>
-            </li>
-            <li>
-              <router-link to="/index/correlation"> <i class="el-icon-s-data"></i> 关联信息</router-link>
-            </li>
-            <li>
-              <router-link to="/index/signalman"> <i class="el-icon-s-order"></i> 信号员表</router-link>
-            </li>
-            <li>
-              <router-link to="/index/following"> <i class="el-icon-eleme"></i> 跟随表</router-link>
-            </li>
-            <!-- <li>
-              <router-link to="/index/exemple">例子</router-link>
-            </li> -->
-          </ul>
-        </nav>
+        <sider-bar></sider-bar>
       </aside>
       <!-- End 左侧导航栏 -->
 
       <!-- 头部信息 -->
-      <header class="header_top">
+      <!-- <header class="header_top">
         <nav class="header_content">
-          <div class="header_left"> <i class="el-icon-s-fold"></i> 后台管理系统</div>
+          <div class="header_left">
+            <i class="el-icon-s-fold"></i> 后台管理系统
+          </div>
 
           <div v-if="ifLogin" class="header_right">
-            <img class="img-avatar" src="../assets/avatar.jpg" alt="笔下光年" />
-            <div class="nickname">笔下光年 <i class="el-icon-edit"></i> </div>
+            <img class="img-avatar" src="@/assets/avatar.jpg" alt="笔下光年" />
+            <div class="nickname">
+              笔下光年
+              <i class="el-icon-edit"></i>
+            </div>
           </div>
           <div v-else class="login">
-              <div>登录后查看</div>
-              <router-link to='/login'>登录  </router-link>
-              <i class="el-icon-user"></i>
+            <div>登录后查看</div>
+            <router-link to="/login">登录</router-link>
+            <i class="el-icon-user"></i>
           </div>
-
         </nav>
-      </header>
+      </header>-->
       <!-- End 头部信息 -->
       <div class="main_content">
         <router-view />
@@ -52,12 +37,12 @@
 </template>
 
 <script>
+// import { SiderBar } from "./components";
+import SiderBar from "./components/SiderBar";
 export default {
-  name: "app",
-  data(){
-    return{
-      ifLogin: 0,
-    }
+  name: "Layout",
+  components: {
+    SiderBar
   }
 };
 </script>
@@ -160,33 +145,32 @@ li {
         border-radius: 50%;
         box-shadow: 0 5px 10px 5px rgba(110, 122, 139, 0.15);
       }
-      .nickname{
+      .nickname {
         line-height: 68px;
         margin: 0 20px;
         color: darkcyan;
         cursor: pointer;
       }
-      
     }
-    .login{
+    .login {
       line-height: 68px;
       padding: 0 20px;
       display: flex;
 
-      div{
+      div {
         font-size: 12px;
         color: darkcyan;
         margin: 0 20px;
       }
-      a{
+      a {
         display: inline;
         font-size: 14px;
         color: darkcyan;
       }
-      a:hover{
+      a:hover {
         color: rgb(7, 192, 192);
       }
-      i{
+      i {
         width: 32px;
         height: 32px;
         text-align: center;

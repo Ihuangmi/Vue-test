@@ -1,28 +1,23 @@
 <template>
   <div class="app">
     <div class="login">
-      <h1>login</h1>
+      <h1>登 录</h1>
       <div class="login_form">
         <el-form
           :model="ruleForm"
-          status-icon
           :rules="rules"
           ref="ruleForm"
           label-width="100px"
           class="demo-ruleForm"
         >
-          <el-form-item label="用户名" prop="userName">
-            <el-input v-model.number="ruleForm.userName"></el-input>
+          <el-form-item prop="username">
+            <el-input v-model.number="ruleForm.username" placeholder="用户名"></el-input>
           </el-form-item>
-          <el-form-item label="密码" prop="pass">
-            <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item label="确认密码" prop="checkPass">
-            <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
+          <el-form-item prop="password">
+            <el-input type="password" v-model="ruleForm.password" placeholder="密码"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
-            <el-button @click="resetForm('ruleForm')">重置</el-button>
+            <el-button type="primary" @click="submitForm('ruleForm')" style="width: 100%">登录</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -58,7 +53,7 @@ export default {
     var validatePass2 = (rule, value, callback) => {
       if (value === "") {
         callback(new Error("请再次输入密码"));
-      } else if (value !== this.ruleForm.pass) {
+      } else if (value !== this.ruleForm.password) {
         callback(new Error("两次输入密码不一致!"));
       } else {
         callback();
@@ -66,13 +61,13 @@ export default {
     };
     return {
       ruleForm: {
-        pass: "",
+        password: "",
         checkPass: "",
-        userName: ""
+        username: ""
       },
       rules: {
-        userName: [{ validator: checkName, trigger: "blur" }],
-        pass: [{ validator: validatePass, trigger: "blur" }],
+        username: [{ validator: checkName, trigger: "blur" }],
+        password: [{ validator: validatePass, trigger: "blur" }],
         checkPass: [{ validator: validatePass2, trigger: "blur" }]
       }
     };
@@ -81,9 +76,9 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          this.$router.push('/index/userinfo')
-          console.info('提交成功')
-          console.info(`ruleForm=`, this.ruleForm)
+          this.$router.push("/");
+        //   console.info("提交成功");
+          console.info(`ruleForm=`, this.ruleForm);
           // 在此处提交表单至后台
         } else {
           console.log("提交失败！！");
@@ -99,7 +94,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
 .app {
   width: 100%;
   height: 100%;
@@ -113,10 +107,11 @@ export default {
     width: 100%;
     height: 100%;
     margin: 0;
-    background-color: lightblue;
+    color: #fff;
+    background-color: rgb(23, 65, 80);
     // z-index: 0;
 
-    h1{
+    h1 {
       margin: 0 auto;
       text-align: center;
       padding-top: 100px;

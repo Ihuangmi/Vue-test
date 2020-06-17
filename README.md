@@ -1,4 +1,4 @@
-# klipc_management
+# Vue-admin
 
 ## Project setup
 ```

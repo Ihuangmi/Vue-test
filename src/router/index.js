@@ -1,31 +1,45 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Index from '../views/index.vue'
+import Layout from '@/views/layout'
 
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', redirect: '/index/userinfo' },
-  {
-    path: '/index',
-    name: 'index',
-    component: Index,
-    children: [
-      { path: '/index/userinfo', component: () => import('../components/userinfo') },
-      { path: '/index/correlation', component: () => import('../components/correlation') },
-      { path: '/index/signalman', component: () => import('../components/signalman') },
-      { path: '/index/following', component: () => import('../components/following') },
-      { path: '/index/exemple', component: () => import('../components/exemple') }
-    ]
-  },
   {
     path: '/login',
     name: 'login',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/login.vue')
-  }
+    hiden: true,
+    component: () => import('@/views/login')
+  },
+  { 
+    path: '/',
+    component: Layout,
+    redirect: '/home',
+    children: [{
+      path: '/home',
+      name: 'home',
+      component: () => import('@/views/home'),
+      meta: { title: '首页' }
+    }]
+  },
+  { 
+    path: '/risk',
+    component: Layout,
+    redirect: '/risk/link-account',
+    meta: { title: '风险助手' },
+    children: [{
+      path: 'link-account',
+      name: 'link-account',
+      component: () => import('@/views/risk/link-account'),
+      meta: { title: '账户关联' }
+    },
+    {
+      path: 'risk-exposure',
+      name: 'risk-exposure',
+      component: () => import('@/views/risk/risk-exposure'),
+      meta: { title: '风险敞口' }
+    }]
+  },
 ]
 
 const router = new VueRouter({
