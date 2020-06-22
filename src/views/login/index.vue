@@ -17,7 +17,12 @@
             <el-input type="password" v-model="ruleForm.password" placeholder="密码"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="submitForm('ruleForm')" style="width: 100%">登录</el-button>
+            <el-button
+              type="primary"
+              @click="submitForm('ruleForm')"
+              :loading="loading"
+              style="width: 100%"
+            >登录</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -60,6 +65,7 @@ export default {
       }
     };
     return {
+      loading: false,
       ruleForm: {
         password: "",
         checkPass: "",
@@ -74,10 +80,11 @@ export default {
   },
   methods: {
     submitForm(formName) {
+      this.loading = true;
       this.$refs[formName].validate(valid => {
         if (valid) {
+          this.loading = false
           this.$router.push("/");
-        //   console.info("提交成功");
           console.info(`ruleForm=`, this.ruleForm);
           // 在此处提交表单至后台
         } else {

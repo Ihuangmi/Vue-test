@@ -14,14 +14,14 @@ const routes = [
   },
   {
     path: '/',
+    name: 'home',
     component: Layout,
     redirect: '/home',
     meta: { title: '首页' },
     children: [{
       path: '/home',
-      name: 'home',
       component: () => import('@/views/home'),
-      meta: { title: '首页' }
+      // meta: { title: '首页' }
     }]
   },
   {
@@ -57,6 +57,12 @@ const routes = [
       component: () => import('@/views/myclipc/user-profile'),
       meta: { title: '跟单详情' }
     }]
+  },
+  {
+    path: '/login',
+    name: 'logout',
+    component: () => import('@/views/login'),
+    meta: { title: '注销登录' }
   },
 ]
 
