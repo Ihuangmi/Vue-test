@@ -39,7 +39,14 @@ const routes = [
       name: 'risk-exposure',
       component: () => import('@/views/risk/risk-exposure'),
       meta: { title: '风险敞口' }
-    }]
+    },
+    {
+      path: '/risk/table',
+      name: 'table',
+      component: () => import('@/views/risk/table'),
+      meta: { title: '表格封装' }
+    },
+  ]
   },
   {
     path: '/myclipc',

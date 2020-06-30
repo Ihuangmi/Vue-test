@@ -1,1 +1,0 @@
-vue/src/components/layout/left-side/default/left-side.vue

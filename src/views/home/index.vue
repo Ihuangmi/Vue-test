@@ -17,34 +17,21 @@
           <div class="grid-content bg-purple card-link">
             <el-card class="box-card">
               <div slot="header" class="clearfix card-header">
-                <span>{{$t('home.linkaccount')}} </span>
+                <span>{{$t('home.linkaccount')}}</span>
               </div>
               <div class="text item">
                 <el-table border :data="tableData" style="width: 100%">
-                  <el-table-column prop="platform" :label="$t('home.platform')"></el-table-column>
-                  <el-table-column prop="account" :label="$t('home.account')"></el-table-column>
-                  <el-table-column prop="balance" :label="$t('home.balance')"></el-table-column>
-                  <el-table-column prop="accounttype" :label="$t('home.accounttype')" width="110"></el-table-column>
+                  <el-table-column
+                    v-for="(col, index) in cols"
+                    :key="index"
+                    v-bind="col"
+                  ></el-table-column>
                 </el-table>
               </div>
             </el-card>
           </div>
         </el-col>
 
-        <el-col :span="8">
-          <div class="grid-content bg-purple-light"></div>
-        </el-col>
-        <el-col :span="8">
-          <div class="grid-content bg-purple"></div>
-        </el-col>
-      </el-row>
-      <el-row>
-        <el-col :span="16">
-          <div class="grid-content bg-purple"></div>
-        </el-col>
-        <el-col :span="8">
-          <div class="grid-content bg-purple-light"></div>
-        </el-col>
       </el-row>
     </div>
   </main>
@@ -58,12 +45,39 @@ export default {
           platform: "MT4",
           account: "aaa",
           balance: 88,
-          accounttype: "m"
+          accounttype: "mwwssssssswwwwwwww"
+        },
+        {
+          platform: "MT5",
+          account: "ddd",
+          balance: 8348,
+          accounttype: "mfd"
         }
       ]
     };
   },
   computed: {
+    cols() {
+      return [
+        {
+          prop: "platform",
+          label: this.$i18n.t("home.platform"),
+        },
+        {
+          prop: "account",
+          label: this.$i18n.t("home.account")
+        },
+        {
+          prop: "balance",
+          label: this.$i18n.t("home.balance")
+        },
+        {
+          prop: "accounttype",
+          label: this.$i18n.t("home.accounttype"),
+          width: 200
+        }
+      ];
+    },
     links() {
       return [
         {
@@ -104,5 +118,4 @@ export default {
     background-color: #db5655;
   }
 }
-
 </style>

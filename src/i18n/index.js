@@ -5,7 +5,7 @@ import { getCookie } from '@/utils'
 import ElementLocale from 'element-ui/lib/locale'
 
 Vue.use(VueI18n)
-console.log(getCookie('PLAY_LANG'))
+
 const messages = {
   en: require('./common/en'),
   zh: require('./common/zh')
