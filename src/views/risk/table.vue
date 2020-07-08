@@ -64,13 +64,15 @@
 import EnhancedTable from "@/components/EnhancedTable.vue";
 import Pagination from "@/components/Pagination.vue";
 import PrefixPlusText from "./components/PrefixPlusText.vue";
+import PrefixPlusText2 from "./components/PrefixPlusText2.vue";
 
 export default {
   name: "home",
   components: {
     EnhancedTable,
     Pagination,
-    PrefixPlusText
+    PrefixPlusText,
+    PrefixPlusText2,
   },
   data() {
     let basicTableConfigs = [
@@ -91,7 +93,8 @@ export default {
       { prop: "name", label: "姓名" },
       { prop: "address", label: "地址" },
       { prop: "trend", label: "趋势" },
-      { component: PrefixPlusText, prop: "change", label: "component的变化" }
+      { component: PrefixPlusText, prop: "change", label: "component" },
+      { component: PrefixPlusText2, prop: "change2", label: "组件" },
     ];
     let sortedTableConfigs = [
       {

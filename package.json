@@ -47,7 +47,12 @@
     },
     "rules": {
       "no-unused-vars": "off",
-      "vue/no-unused-components": "off"
+      "vue/no-unused-components": "off",
+      "generator-star-spacing": "off",
+      "no-tabs": "off",
+      "no-console": "off",
+      "no-irregular-whitespace": "off",
+      "no-debugger": "off"
     }
   },
   "browserslist": [
