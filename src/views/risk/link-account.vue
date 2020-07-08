@@ -9,23 +9,6 @@
         </el-table-column>
       </template>
     </my-table>
-    <!-- 
-      <el-table-column min-width="300px" label="备注">
-        <template slot-scope="{row}">
-          <template v-if="row.edit">
-            <el-input v-model="row.note" class="edit-input" size="mini" />
-            <el-button
-              class="cancel-btn"
-              size="mini"
-              icon="el-icon-refresh"
-              type="warning"
-              @click="cancelEdit(row)"
-            />
-          </template>
-          <span v-else>{{ row.note }}</span>
-        </template>
-      </el-table-column>
-     -->
     <my-slot>
       <!-- {{title}} -->
       <!-- v-slot只能添加在一个<template>上 -->

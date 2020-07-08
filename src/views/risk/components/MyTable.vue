@@ -9,7 +9,6 @@
           :col-config="colConfig"
           :key="colConfig.prop+'2'"
         ></component>
-        <!-- <span v-else>{{row[colConfig.prop]}}</span> -->
         <el-table-column v-bind="colConfig" :key="colConfig.prop"></el-table-column>
       </template>
     </el-table>
