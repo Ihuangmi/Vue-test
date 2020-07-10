@@ -3,6 +3,7 @@
     :data="tableData"
     v-loading="isLoad"
     stripe
+    border
     v-bind="tableConfig"
     @sort-change="changeSort"
     @selection-change="changeSelectRows"

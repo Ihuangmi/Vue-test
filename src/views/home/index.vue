@@ -11,8 +11,11 @@
           </div>
         </el-col>
       </el-row>
+      <el-row>
+        <search></search>
+      </el-row>
 
-      <el-row :gutter="10">
+      <!-- <el-row :gutter="10">
         <el-col :span="8">
           <div class="grid-content bg-purple card-link">
             <el-card class="box-card">
@@ -21,23 +24,21 @@
               </div>
               <div class="text item">
                 <el-table border :data="tableData" style="width: 100%">
-                  <el-table-column
-                    v-for="(col, index) in cols"
-                    :key="index"
-                    v-bind="col"
-                  ></el-table-column>
+                  <el-table-column v-for="(col, index) in cols" :key="index" v-bind="col"></el-table-column>
                 </el-table>
               </div>
             </el-card>
           </div>
         </el-col>
+      </el-row> -->
 
-      </el-row>
     </div>
   </main>
 </template>
 <script>
+import Search from "./components/search";
 export default {
+  components: { Search },
   data() {
     return {
       tableData: [
@@ -61,7 +62,7 @@ export default {
       return [
         {
           prop: "platform",
-          label: this.$i18n.t("home.platform"),
+          label: this.$i18n.t("home.platform")
         },
         {
           prop: "account",
