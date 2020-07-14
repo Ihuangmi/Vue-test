@@ -14,34 +14,33 @@ const routes = [
   },
   {
     path: '/',
+    redirect: '/home',
     name: 'home',
     component: Layout,
-    redirect: '/home',
     meta: { title: '首页' },
     children: [{
       path: '/home',
       component: () => import('@/views/home'),
-      // meta: { title: '首页' }
     }]
   },
   {
     path: '/risk',
     component: Layout,
-    meta: { title: '风险助手' },
+    meta: { title: '封装' },
     children: [{
-      path: '/risk/link-account',
+      path: 'link-account',
       name: 'link-account',
       component: () => import('@/views/risk/link-account'),
-      meta: { title: '账户关联' }
+      meta: { title: 'slot' }
     },
     {
-      path: '/risk/risk-exposure',
+      path: 'risk-exposure',
       name: 'risk-exposure',
       component: () => import('@/views/risk/risk-exposure'),
-      meta: { title: '风险敞口' }
+      meta: { title: 'table' }
     },
     {
-      path: '/risk/table',
+      path: 'table',
       name: 'table',
       component: () => import('@/views/risk/table'),
       meta: { title: '表格封装' }
@@ -49,27 +48,27 @@ const routes = [
   ]
   },
   {
-    path: '/myclipc',
+    path: '/study',
     component: Layout,
-    meta: { title: '我的KlipC' },
+    meta: { title: '目录2' },
     children: [{
-      path: '/myclipc/trader-profile',
+      path: 'trader-profile',
       name: 'trader-profile',
-      component: () => import('@/views/myclipc/trader-profile'),
-      meta: { title: '我的主页' }
+      component: () => import('@/views/study/trader-profile'),
+      meta: { title: '目录2-1' }
     },
     {
-      path: '/myclipc/user-profile',
+      path: 'user-profile',
       name: 'user-profile',
-      component: () => import('@/views/myclipc/user-profile'),
-      meta: { title: '跟单详情' }
+      component: () => import('@/views/study/user-profile'),
+      meta: { title: '目录2-2' }
     }]
   },
   {
     path: '/login',
     name: 'logout',
     component: () => import('@/views/login'),
-    meta: { title: '注销登录' }
+    meta: { title: '退出' }
   },
 ]
 

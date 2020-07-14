@@ -18,7 +18,7 @@
         <template v-slot:options="{colConfig}">
           <el-table-column v-bind="colConfig">
             <template v-slot="{row}">
-              <el-button size="mini">查看{{row.date}}</el-button>
+              <el-button size="mini" @click="onView(row)">查看{{row.date}}</el-button>
             </template>
           </el-table-column>
         </template>
@@ -91,10 +91,10 @@ export default {
     let componentTableConfigs = [
       { prop: "date", label: "日期" },
       { prop: "name", label: "姓名" },
-      { prop: "address", label: "地址" },
+      { prop: "address", label: "地址", width: 260 },
       { prop: "trend", label: "趋势" },
-      { component: PrefixPlusText, prop: "change", label: "component" },
-      { component: PrefixPlusText2, prop: "change2", label: "组件" },
+      { component: PrefixPlusText, prop: "change", label: "组件1" },
+      { component: PrefixPlusText2, prop: "change2", label: "组件2" },
     ];
     let sortedTableConfigs = [
       {
@@ -163,6 +163,9 @@ export default {
     }, 3000);
   },
   methods: {
+    onView(row){
+      console.log(`row=`, row)
+    },
     getList() {
       console.log("getList");
     },

@@ -1,6 +1,6 @@
 <template>
   <div id="SideBar">
-    <div class="menutop">
+    <!-- <div class="menutop">
       <img src="@/assets/syslogo.png" alt="logo" style="width: 150px; height: 50px" />
       <br />
       <br />
@@ -8,26 +8,28 @@
         <div>选择语言</div>
         <el-select v-model="currentlang" placeholder="请选择" @change="langChange">
           <el-option
-            v-for="item in langs"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
+            v-for="lang in languages"
+            :key="lang.value"
+            :label="lang.label"
+            :value="lang.value"
           ></el-option>
         </el-select>
       </div>
-      <div>
-        <!-- <h4>hellow</h4> -->
-      </div>
-    </div>
+    </div>-->
     <el-menu
-      :default-active="active"
+      :default-active="activeMenu"
       class="el-menu-vertical-demo"
       background-color="#fff"
       text-color="black"
       active-text-color="#33CC99"
       :unique-opened="true"
     >
-      <app-link v-for="route in routes" :key="route.name" :item="route" />
+      <app-link
+        v-for="route in routesItem"
+        :key="route.name"
+        :item="route"
+        :base-path="route.path"
+      />
     </el-menu>
   </div>
 </template>
@@ -35,37 +37,40 @@
 <script>
 import routes from "@/router";
 import AppLink from "./AppLink";
-import { setCookie } from "@/utils";
 
 export default {
   name: "SideBar",
   components: { AppLink },
-  created() {
-    this.currentlang = this.$i18n.locale
-  },
   data() {
     return {
       currentlang: "zh",
-      langs: [
+      languages: [
         { label: "中文", value: "zh" },
         { label: "English", value: "en" }
       ]
     };
   },
   computed: {
-    routes() {
+    routesItem() {
+      console.log(`routes.options.routes=`, routes.options.routes);
       return routes.options.routes;
     },
-    active() {
-      // console.log(this.$route.path);
-      return this.$route.path;
+    activeMenu() {
+      const route = this.$route;
+      const { meta, path } = route;
+      // if set path, the sidebar will highlight the path you set
+      if (meta.activeMenu) {
+        return meta.activeMenu;
+      }
+      console.log(`activeMenu=`, path);
+      return path;
     }
   },
   methods: {
     langChange() {
       this.$i18n.locale = this.currentlang;
-      setCookie("PLAY_LANG", this.currentlang);
-    },
+      sessionStorage.setItem("PLAY_LANG", this.currentlang);
+    }
   }
 };
 </script>
@@ -75,7 +80,6 @@ export default {
 
   .langs {
     display: flex;
-
   }
 }
 </style>

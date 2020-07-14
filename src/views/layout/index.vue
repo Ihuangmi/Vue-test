@@ -4,7 +4,7 @@
       <sider-bar></sider-bar>
     </el-aside>
     <el-container>
-      <el-header class="header">
+      <!-- <el-header class="header">
         <div class="card">
           <div v-for="(item, index) in cardArray" :key="item" class="card-box">
             <el-row>
@@ -24,10 +24,12 @@
           </div>
         </div>
         <hr />
-      </el-header>
+      </el-header>-->
 
       <el-main class="main">
-        <router-view />
+        <transition name="bounce">
+          <router-view />
+        </transition>
       </el-main>
     </el-container>
   </el-container>
@@ -49,6 +51,27 @@ export default {
 </script>
 
 <style lang="less" scoped>
+/* 可以设置不同的进入和离开动画 */
+/* 设置持续时间和动画函数 */
+.bounce-enter-active {
+  animation: bounce-in .5s;
+}
+.bounce-leave-active {
+  animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
 .aside {
   position: fixed;
   top: 0;
@@ -127,6 +150,5 @@ export default {
 .main {
   padding-left: 260px;
 }
-
 </style>
 
