@@ -1,6 +1,8 @@
 module.exports={
     nav: {
-        home: '首页11'
+        home: '首页11',
+        login: '登录',
+        logout: '退出',
     },
     home: {
         title1: '关联MT4/MT5账户',

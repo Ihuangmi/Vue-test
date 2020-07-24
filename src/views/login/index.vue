@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import { setToken } from '@/utils/storage'
+
 export default {
   data() {
     var checkName = (rule, value, callback) => {
@@ -84,9 +86,10 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           this.loading = false
-          this.$router.push("/");
-          console.info(`ruleForm=`, this.ruleForm);
+          setToken('isLogin', true);//设置已登录token
           // 在此处提交表单至后台
+          console.info(`ruleForm=`, this.ruleForm);
+          this.$router.push("/");
         } else {
           console.log("提交失败！！");
           return false;

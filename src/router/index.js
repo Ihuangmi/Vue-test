@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Layout from '@/views/layout'
+import { getToken } from '@/utils/storage'
+import i18n from '../i18n'
 
 Vue.use(VueRouter)
 
@@ -10,17 +12,22 @@ const routes = [
     name: 'login',
     hiden: true,
     component: () => import('@/views/login'),
-    meta: { title: '登录' }
+    meta: { title: i18n.t("nav.login") }
   },
   {
     path: '/',
     redirect: '/home',
     name: 'home',
     component: Layout,
-    meta: { title: '首页' },
+    meta: { title: i18n.t("nav.home") },
     children: [{
       path: '/home',
       component: () => import('@/views/home'),
+      meta: { title: '封装1' },
+    },{
+      path: '/home/home',
+      component: () => import('@/views/home/home'),
+      meta: { title: '封装2' },
     }]
   },
   {
@@ -75,5 +82,16 @@ const routes = [
 const router = new VueRouter({
   routes
 })
+
+router.beforeEach((to, from, next) =>{
+  if(to.path !== '/login' && !getToken('isLogin')){
+    next({
+      path: '/login'
+    })
+  } else {
+    next()
+  }
+})
+
 
 export default router

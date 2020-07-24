@@ -1,6 +1,8 @@
 module.exports={
     nav: {
-        home: 'Home'
+        home: 'Home',
+        login: 'Login',
+        logout: 'Logout',
     },
     home: {
         title1: 'Link MT4/MT5 Accounts',

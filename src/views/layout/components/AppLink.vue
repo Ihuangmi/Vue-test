@@ -8,7 +8,7 @@
       <app-link v-for="route in item.children" :key="route.path" :item="route" :base-path="item.path" />
     </el-submenu>
 
-    <router-link v-else :to="resolvePath(item.path)">
+    <router-link v-else :to="resolvePath(item.path)" append>
       <!-- <router-link v-else :to="item.path"> -->
       <el-menu-item :index="resolvePath(item.redirect || item.path)">
         <div class="menu-item">

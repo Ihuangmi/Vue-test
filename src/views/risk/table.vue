@@ -2,7 +2,7 @@
   <ul>
     <li>
       <h2>基本表格</h2>
-      <enhanced-table :tableData="tableData" :col-configs="basicTableConfigs"></enhanced-table>
+      <enhanced-table :tableData="tableData" :col-configs="basicTableConfigs" :table-config="tableConfig"></enhanced-table>
       <pagination
         v-show="total>0"
         :total="total"
@@ -124,6 +124,7 @@ export default {
       { prop: "trend", label: "趋势" }
     ];
     return {
+      tableConfig: {border: true},
       total: 50,
       listQuery: {},
       basicTableConfigs,

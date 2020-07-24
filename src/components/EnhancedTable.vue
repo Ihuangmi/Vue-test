@@ -3,7 +3,6 @@
     :data="tableData"
     v-loading="isLoad"
     stripe
-    border
     v-bind="tableConfig"
     @sort-change="changeSort"
     @selection-change="changeSelectRows"
@@ -36,9 +35,9 @@ export default {
     tableConfig: Object,
     isLoad: Boolean
   },
-  // created(){
-  //   console.log(this.colConfigs)
-  // },
+  created(){
+    console.log(this._props)
+  },
   methods: {
     // 提前先定义排序事件，需要用的时候直接在父组件使用
     changeSort({ column, prop, order }) {
